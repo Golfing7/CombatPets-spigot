@@ -68,6 +68,12 @@
         </dependency>
 
         <dependency>
+            <groupId>su.nightexpress.combatpets</groupId>
+            <artifactId>MC_1_21_5</artifactId>
+            <version>2.4.2</version>
+        </dependency>
+
+        <dependency>
             <groupId>su.nightexpress.economybridge</groupId>
             <artifactId>economy-bridge</artifactId>
             <version>1.2.0</version>
@@ -103,6 +109,17 @@
             </resource>
         </resources>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <paperweight-mappings-namespace>mojang+yarn</paperweight-mappings-namespace>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>

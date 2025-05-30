@@ -13,6 +13,7 @@
         <module>API</module>
         <module>NMS</module>
         <module>MC_1_21_4</module>
+        <module>MC_1_21_5</module>
     </modules>
 
     <properties>
