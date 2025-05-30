@@ -137,9 +137,9 @@ public class PetBrain {
     private static final Method HANDLE_ENTITY_DAMAGE = Reflex.getMethod(LivingEntity.class, "handleEntityDamage", DamageSource.class, Float.TYPE, Float.TYPE);
     //private static final Method ACTUALLY_HURT        = Reflex.getMethod(LivingEntity.class, "actuallyHurt", DamageSource.class, Float.TYPE, EntityDamageEvent.class);
     private static final Method ACTUALLY_HURT        = Reflex.getMethod(LivingEntity.class, "actuallyHurt", ServerLevel.class, DamageSource.class, Float.TYPE, EntityDamageEvent.class);
-    private static final Field  NO_ACTION_TIME       = Reflex.getField(LivingEntity.class, "bf");
-    private static final Field  LAST_DAMAGE_SOURCE   = Reflex.getField(LivingEntity.class, "ci");
-    private static final Field  LAST_DAMAGE_TIME     = Reflex.getField(LivingEntity.class, "cj");
+    private static final Field  NO_ACTION_TIME       = Reflex.getField(LivingEntity.class, "noActionTime");
+    private static final Field  LAST_DAMAGE_SOURCE   = Reflex.getField(LivingEntity.class, "lastDamageSource");
+    private static final Field  LAST_DAMAGE_TIME     = Reflex.getField(LivingEntity.class, "lastDamageStamp");
 
     /*
         Reimplemention of the LivingEntity#hurtServer method to 'override' AI effects and calls for 'brained' mobs.
@@ -342,7 +342,7 @@ public class PetBrain {
         }
 
         if (!entity.fireImmune()) {
-            entity.hurtServer(worldserver, entity.damageSources().lightningBolt().customEntityDamager(entitylightning), 5.0F);
+            entity.hurtServer(worldserver, entity.damageSources().lightningBolt().eventEntityDamager(entitylightning), 5.0F);
         }
     }
 }

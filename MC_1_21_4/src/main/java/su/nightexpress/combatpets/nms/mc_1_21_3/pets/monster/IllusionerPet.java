@@ -26,7 +26,7 @@ public class IllusionerPet extends Illusioner implements PetEntity {
 
     static {
         //Class<?> blindSpellGoalClass = Illusioner.class.getDeclaredClasses()[0];
-        Class<?> mirrorSpellGoalClass = Illusioner.class.getDeclaredClasses()[1];
+        Class<?> mirrorSpellGoalClass = Reflex.getInnerClass(Illusioner.class.getName(), "IllusionerMirrorSpellGoal");
 
         //CONSTRUCT_BLIND_SPELL_GOAL = Reflex.getConstructor(blindSpellGoalClass, Illusioner.class);
         CONSTRUCT_MIRROR_SPELL_GOAL = Reflex.getConstructor(mirrorSpellGoalClass, Illusioner.class);

@@ -12,7 +12,7 @@ import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
-import org.bukkit.craftbukkit.v1_21_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.bukkit.event.entity.EntityTargetEvent;
 import org.jetbrains.annotations.NotNull;
 import su.nightexpress.combatpets.api.pet.PetEntity;
@@ -25,9 +25,8 @@ import java.util.EnumSet;
 
 public class PhantomPet extends Phantom implements PetEntity {
 
-    private static final String MOVE_TARGET_POINT = "d";
-    private static final String ATTACK_FASE = "bY";
-    private static final String ANCHOR_POINT = "bX";
+    private static final String MOVE_TARGET_POINT = "moveTargetPoint";
+    private static final String ATTACK_FASE = "attackPhase";
 
     private LivingEntity lastTarget;
 
@@ -170,11 +169,11 @@ public class PhantomPet extends Phantom implements PetEntity {
         private void selectNext() {
             LivingEntity follow = getTarget();
 
-            BlockPos anchor = (BlockPos) Reflex.getFieldValue(PhantomPet.this, ANCHOR_POINT);
+            BlockPos anchor = PhantomPet.this.anchorPoint;
             if (anchor == null) return;
 
             if (BlockPos.ZERO.equals(anchor)) {
-                Reflex.setFieldValue(PhantomPet.this, ANCHOR_POINT, new BlockPos(anchor = PhantomPet.this.blockPosition()));
+                PhantomPet.this.anchorPoint = new BlockPos(anchor = PhantomPet.this.blockPosition());
             }
 
             Vec3 point;

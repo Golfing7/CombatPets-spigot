@@ -39,7 +39,7 @@ public class ZombifiedPiglinPet extends ZombifiedPiglin implements PetEntity {
     }
 
     @Override
-    protected boolean isSunSensitive() {
+    public boolean isSunSensitive() {
         return false;
     }
 }

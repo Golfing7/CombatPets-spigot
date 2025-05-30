@@ -26,7 +26,7 @@ public class BlazePet extends Blaze implements PetEntity {
     private static final Method SET_CHARGED;
 
     static {
-        SET_CHARGED = Reflex.getMethod(Blaze.class, "x", Boolean.TYPE);
+        SET_CHARGED = Reflex.getMethod(Blaze.class, "setCharged", Boolean.TYPE);
     }
 
     public BlazePet(@NotNull ServerLevel world) {

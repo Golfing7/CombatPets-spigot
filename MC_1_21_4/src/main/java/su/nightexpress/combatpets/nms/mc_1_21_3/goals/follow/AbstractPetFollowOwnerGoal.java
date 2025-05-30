@@ -5,7 +5,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.monster.Slime;
-import org.bukkit.craftbukkit.v1_21_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.jetbrains.annotations.NotNull;
 import su.nightexpress.combatpets.api.pet.ActivePet;
 import su.nightexpress.combatpets.api.pet.PetEntity;
@@ -24,7 +24,7 @@ public abstract class AbstractPetFollowOwnerGoal extends Goal {
     public static final Method SLIME_ROTATE;
 
     static {
-        SLIME_ROTATE = Reflex.getMethod(Slime.class.getDeclaredClasses()[0], "a", float.class, boolean.class);
+        SLIME_ROTATE = Reflex.getMethod(Reflex.getInnerClass(Slime.class.getName(), "SlimeMoveControl"), "setDirection", float.class, boolean.class);
     }
 
     public AbstractPetFollowOwnerGoal(@NotNull Mob pet) {

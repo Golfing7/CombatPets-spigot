@@ -45,7 +45,7 @@ public class ZombieVillagerPet extends ZombieVillager implements PetEntity {
     }
 
     @Override
-    protected boolean isSunSensitive() {
+    public boolean isSunSensitive() {
         return false;
     }
 

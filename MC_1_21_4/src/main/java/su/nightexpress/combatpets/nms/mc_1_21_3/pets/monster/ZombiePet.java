@@ -39,7 +39,7 @@ public class ZombiePet extends Zombie implements PetEntity {
     }
 
     @Override
-    protected boolean isSunSensitive() {
+    public boolean isSunSensitive() {
         return false;
     }
 }

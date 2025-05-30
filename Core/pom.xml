@@ -5,7 +5,7 @@
     <parent>
         <artifactId>CombatPets</artifactId>
         <groupId>su.nightexpress.combatpets</groupId>
-        <version>2.4.1</version>
+        <version>2.4.2</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -33,38 +33,38 @@
 
         <repository>
             <id>lumine-snapshot</id>
-            <url>http://mvn.lumine.io/repository/maven-snapshots/</url>
+            <url>https://mvn.lumine.io/repository/maven-snapshots/</url>
         </repository>
 
         <repository>
             <id>placeholderapi</id>
             <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
         </repository>
+
+        <repository>
+            <id>magmaguy-repo-releases</id>
+            <name>MagmaGuy's Repository</name>
+            <url>https://repo.magmaguy.com/releases</url>
+        </repository>
     </repositories>
 
     <dependencies>
         <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.21.3-R0.1-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
             <groupId>su.nightexpress.combatpets</groupId>
             <artifactId>API</artifactId>
-            <version>2.4.1</version>
+            <version>2.4.2</version>
         </dependency>
 
         <dependency>
             <groupId>su.nightexpress.combatpets</groupId>
             <artifactId>NMS</artifactId>
-            <version>2.4.1</version>
+            <version>2.4.2</version>
         </dependency>
 
         <dependency>
             <groupId>su.nightexpress.combatpets</groupId>
             <artifactId>MC_1_21_4</artifactId>
-            <version>2.4.1</version>
+            <version>2.4.2</version>
         </dependency>
 
         <dependency>
@@ -74,15 +74,15 @@
         </dependency>
 
         <dependency>
-            <groupId>com.magmaguy.freeminecraftmodels</groupId>
+            <groupId>com.magmaguy</groupId>
             <artifactId>FreeMinecraftModels</artifactId>
-            <version>1.1.2</version>
+            <version>2.1.0</version>
         </dependency>
 
         <dependency>
             <groupId>io.lumine</groupId>
             <artifactId>Mythic-Dist</artifactId>
-            <version>5.0.1-SNAPSHOT</version>
+            <version>5.8.2</version>
             <scope>provided</scope>
         </dependency>
 
@@ -90,7 +90,7 @@
         <dependency>
             <groupId>io.github.arcaneplugins.levelledmobs</groupId>
             <artifactId>LevelledMobs</artifactId>
-            <version>4.1.1</version>
+            <version>4.3.1.1</version>
         </dependency>
     </dependencies>
 
@@ -114,7 +114,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <outputFile>${project.parent.basedir}\target\CombatPets-${project.version}.jar</outputFile>
+                            <outputFile>${project.parent.basedir}/target/CombatPets-${project.version}.jar</outputFile>
                             <artifactSet>
                                 <includes>
                                     <include>su.nightexpress.combatpets:*</include>

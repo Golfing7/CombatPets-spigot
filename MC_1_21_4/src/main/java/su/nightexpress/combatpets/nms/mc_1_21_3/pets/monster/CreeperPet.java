@@ -61,7 +61,7 @@ public class CreeperPet extends Creeper implements PetEntity {
             }
 
             if (this.explodeCooldown-- <= 0) {
-                Reflex.setFieldValue(this, "d", this.swell);
+                Reflex.setFieldValue(this, "oldSwell", this.swell);
 
                 if (this.isIgnited()) {
                     this.setSwellDir(1);
@@ -105,7 +105,7 @@ public class CreeperPet extends Creeper implements PetEntity {
             this.level().explode(this, this.getX(), this.getY(), this.getZ(), event.getRadius(), event.getFire(), interaction);
             this.dead = false;
             //this.die();
-            Method m = Reflex.getMethod(this.getClass(), "fE");
+            Method m = Reflex.getMethod(this.getClass(), "spawnLingeringCloud");
             if (m != null) Reflex.invokeMethod(m, this);
 
             LivingEntity li = (LivingEntity) this.getBukkitEntity();

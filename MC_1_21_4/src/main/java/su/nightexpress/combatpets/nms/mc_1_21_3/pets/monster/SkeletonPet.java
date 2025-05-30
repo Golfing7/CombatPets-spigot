@@ -69,7 +69,7 @@ public class SkeletonPet extends Skeleton implements PetEntity {
     }
 
     @Override
-    protected boolean isSunBurnTick() {
+    public boolean isSunBurnTick() {
         return false;
     }
 }

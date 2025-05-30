@@ -22,7 +22,7 @@ public class HorseStyleVariantHandler extends EnumVariantHandler<Horse.Style> {
 
     @Override
     @NotNull
-    public String getLocalized(Horse.@NotNull Style value) {
+    public String getLocalized(@NotNull Horse.Style value) {
         return Lang.HORSE_STYLE.getLocalized(value);
     }
 

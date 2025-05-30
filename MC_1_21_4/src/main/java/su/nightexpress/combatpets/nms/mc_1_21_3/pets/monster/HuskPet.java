@@ -34,7 +34,7 @@ public class HuskPet extends Husk implements PetEntity {
     }
 
     @Override
-    protected boolean isSunSensitive() {
+    public boolean isSunSensitive() {
         return false;
     }
 

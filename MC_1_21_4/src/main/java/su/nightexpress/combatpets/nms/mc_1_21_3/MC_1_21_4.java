@@ -16,11 +16,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.equipment.Equippable;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.craftbukkit.v1_21_R3.CraftEquipmentSlot;
-import org.bukkit.craftbukkit.v1_21_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_21_R3.damage.CraftDamageSource;
-import org.bukkit.craftbukkit.v1_21_R3.entity.CraftEntity;
-import org.bukkit.craftbukkit.v1_21_R3.entity.CraftLivingEntity;
+import org.bukkit.craftbukkit.CraftEquipmentSlot;
+import org.bukkit.craftbukkit.CraftWorld;
+import org.bukkit.craftbukkit.damage.CraftDamageSource;
+import org.bukkit.craftbukkit.entity.CraftEntity;
+import org.bukkit.craftbukkit.entity.CraftLivingEntity;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -99,22 +99,22 @@ public class MC_1_21_4 implements PetNMS {
 //    }
 
     @SuppressWarnings("unchecked")
-    private void registerAttribute(@NotNull net.minecraft.world.entity.LivingEntity handle, @NotNull Holder<Attribute> holder) {
+    private void registerAttribute(@NotNull net.minecraft.world.entity.LivingEntity handle, Holder<Attribute> holder) {
         AttributeInstance instance = handle.getAttribute(holder);
         if (instance != null) return;
 
         AttributeMap attributes = handle.getAttributes();
-        AttributeSupplier supplier = (AttributeSupplier) Reflex.getFieldValue(attributes, "e");
+        AttributeSupplier supplier = (AttributeSupplier) Reflex.getFieldValue(attributes, "supplier");
         if (supplier == null) return;
 
-        Map<Holder<Attribute>, AttributeInstance> instances = (Map<Holder<Attribute>, AttributeInstance>) Reflex.getFieldValue(supplier, "a");
+        Map<Holder<Attribute>, AttributeInstance> instances = (Map<Holder<Attribute>, AttributeInstance>) Reflex.getFieldValue(supplier, "instances");
         if (instances == null) return;
 
         Map<Holder<Attribute>, AttributeInstance> instances2 = new HashMap<>(instances); // Copy because it's immutable.
         instances2.put(holder, new AttributeInstance(holder, insta -> {
 
         }));
-        Reflex.setFieldValue(supplier, "a", instances2);
+        Reflex.setFieldValue(supplier, "instances", instances2);
     }
 
     @Override
